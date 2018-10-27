@@ -1,0 +1,7 @@
+# directories for development
+.gradle/
+.idea/
+
+# outputs
+build/
+out/
