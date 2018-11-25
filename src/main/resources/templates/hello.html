@@ -1,11 +1,12 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Hello Thymeleaf</title>
-    </head>
-    <body>
-        <h1 th:text="${message}"></h1>
-        <h2>/templates/hello</h2>
-    </body>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Hello Thymeleaf</title>
+    <link rel="stylesheet" href="../static/css/hello.css" th:href="@{/css/hello.css}"/>
+</head>
+<body>
+<h1 th:text="${message}"></h1>
+<h2>/templates/hello</h2>
+</body>
 </html>
