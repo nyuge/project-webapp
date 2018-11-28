@@ -9,12 +9,18 @@ import org.unbescape.html.HtmlEscape;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Locale;
 
 @RestController
 @EnableAutoConfiguration
 public class WebController {
 
-    @RequestMapping({"/", "index.html"})
+    @RequestMapping("/")
+    public String root(Locale locale) {
+        return "redirect:/index";
+    }
+
+    @RequestMapping("index")
     public ModelAndView index(HttpSession session) {
         ModelAndView mav = new ModelAndView("index");
         mav.addObject("mySessionAttribute", "someValue");
@@ -44,16 +50,20 @@ public class WebController {
         throw new RuntimeException("This is a simulated error message");
     }
 
-    @RequestMapping({"/hello", "/hello.html"})
+    @RequestMapping("/hello")
     public ModelAndView hello() {
         ModelAndView mav = new ModelAndView("hello");
         mav.addObject("message", "direct");
         return mav;
     }
 
-    /** Error page. */
-    @RequestMapping("/error.html")
+    /**
+     * Error page.
+     * TODO URLと処理を疎通させる
+     */
+    @RequestMapping("/application-error")
     public String error(HttpServletRequest request, Model model) {
+
         model.addAttribute("errorCode", "Error " + request.getAttribute("javax.servlet.error.status_code"));
         Throwable throwable = (Throwable) request.getAttribute("javax.servlet.error.exception");
         StringBuilder errorMessage = new StringBuilder();

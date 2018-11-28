@@ -1,4 +1,4 @@
-package jp.gr.java_conf.nyuge.security;
+package jp.gr.java_conf.nyuge.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class MLoginUser implements Serializable {
 
     @Id
-    private String loginUserId;
+    private String loginId;
 
     private String password;
 
@@ -16,12 +16,12 @@ public class MLoginUser implements Serializable {
         // NOP
     }
 
-    public String getLoginUserId() {
-        return loginUserId;
+    public String getLoginId() {
+        return loginId;
     }
 
-    public void setLoginUserId(String loginUserId) {
-        this.loginUserId = loginUserId;
+    public void setLoginId(String loginId) {
+        this.loginId = loginId;
     }
 
     public String getPassword() {

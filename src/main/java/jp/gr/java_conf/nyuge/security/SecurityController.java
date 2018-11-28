@@ -1,7 +1,9 @@
 package jp.gr.java_conf.nyuge.security;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -10,20 +12,12 @@ import org.springframework.web.servlet.ModelAndView;
 @EnableAutoConfiguration
 public class SecurityController {
 
-    @RequestMapping("/login.html")
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public ModelAndView login() {
         return new ModelAndView("login");
     }
 
-    @RequestMapping("/login-error.html")
-    public ModelAndView loginError() {
-        ModelAndView mav = new ModelAndView("login");
-        mav.addObject("isError", true);
-        mav.addObject("errorMessage", "ユーザーIDまたはパスワードが違います");
-        return mav;
-    }
-
-    @RequestMapping("/403.html")
+    @RequestMapping("/403")
     public ModelAndView forbidden() {
         return  new ModelAndView("403");
     }
